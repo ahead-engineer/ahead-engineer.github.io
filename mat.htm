@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+	:root
+	{
+		--stripe:	#2ff2;
+		--bgone:	rgba(0, 91, 110, 1);
+		--bgtwo:	rgba(0, 28, 33, 1);
+		--main:		white;
+		--border:	white;
+		--blur:		#2196F3;
+		--boxblur:	#737eae54;
+	}
+
+@media (prefers-color-scheme: dark)
+{
+	:root
+	{
+		--stripe:	#a7101022;
+		--bgone:	rgba(36, 7, 7, 1);
+		--bgtwo:	rgba(0, 0, 0, 1);
+		--main:		#ffce66;
+		--border:	#dd0000;
+		--blur:		#f00;
+		--boxblur:	#ff000052;
+	}
+}
+
+	a
+	{
+		color: var(--main);
+	}
+
+	@media (orientation: landscape)
+	{
+		:root
+		{
+			--stripegap1:	10vmin;
+			--stripegap2:	2vmin;
+		}
+	}
+
+	@media (orientation: portrait)
+	{
+		:root
+		{
+			--stripegap1:	46.75vmin;
+			--stripegap2:	9.35vmin;
+		}
+	}
+	.stripes
+	{
+		background:
+		repeating-linear-gradient(90deg,	var(--stripe), var(--stripe) 1px, #0000 1.5px, #0000 var(--stripegap1)),
+		repeating-linear-gradient(90deg,	var(--stripe), var(--stripe) 1px, #0000 1.5px, #0000 var(--stripegap2)),
+		repeating-linear-gradient(00deg,	var(--stripe), var(--stripe) 1px, #0000 1.5px, #0000 var(--stripegap1)),
+		repeating-linear-gradient(00deg,	var(--stripe), var(--stripe) 1px, #0000 1.5px, #0000 var(--stripegap2)),
+		linear-gradient(142deg,var(--bgone) 0%, var(--bgtwo) 80%);
+
+	}
+
+
+@media (prefers-color-scheme: dark)
+{
+	.stripes
+	{
+		background:
+		repeating-linear-gradient(0deg,		var(--stripe), var(--stripe) 1px, #0000 1.5px, #0000 var(--stripegap1)),
+		repeating-linear-gradient(60deg,	var(--stripe), var(--stripe) 1px, #0000 1.5px, #0000 var(--stripegap1)),
+		repeating-linear-gradient(-60deg,	var(--stripe), var(--stripe) 1px, #0000 1.5px, #0000 var(--stripegap1)),
+		repeating-linear-gradient(0deg,		var(--stripe), var(--stripe) 1px, #0000 1.5px, #0000 var(--stripegap2)),
+		repeating-linear-gradient(60deg,	var(--stripe), var(--stripe) 1px, #0000 1.5px, #0000 var(--stripegap2)),
+		repeating-linear-gradient(-60deg,	var(--stripe), var(--stripe) 1px, #0000 1.5px, #0000 var(--stripegap2)),
+		linear-gradient(142deg,var(--bgone) 0%, var(--bgtwo) 80%);
+
+	}
+}
+	.bg
+	{
+		background: #005B6EFF;
+		background: 		linear-gradient(142deg,var(--bgone) 0%, var(--bgtwo) 80%);
+	}
+
+	*
+	{
+/* 		border: 1px solid red; */
+	}
+	body
+	{
+		margin: 0;
+		padding: 2em;
+		background-color: #89b0f6;
+		color: var(--main);
+		font-family: monospace;
+		font-weight: 500;
+		font-size: 1vw;
+		text-transform: uppercase;
+		box-sizing: border-box;
+
+	}
+
+	#block h1
+	{
+		font-weight: 700;
+		text-shadow: 0 0 0.2em var(--main), 0 0 0.4em var(--main), 0 0 0.6em var(--blur);
+		margin: 0;
+
+	}
+	h2
+	{
+		margin:0;
+		font-weight: 500;
+	}
+
+
+	#page
+	{
+		border: solid var(--border) 0.2em;
+		display: grid;
+	}
+
+
+	@media (orientation: landscape)
+	{
+		#page
+		{
+			grid-template-columns: 34em 1fr 38em;
+			grid-template-rows: 60% 1fr;
+			grid-template-areas:
+			"main main pic"
+			"bom gap block";
+			overflow: hidden;
+			height: 100%;
+		}
+
+		body
+		{
+			height:100vh;
+		}
+	}
+
+	@media (orientation: portrait)
+	{
+		body
+		{
+			padding:	1em;
+			font-size: 2.7vw;
+			min-height: 100vh;
+		}
+		#page
+		{
+/* 			grid-template-rows: 40% 10vw 20em 20em; */
+			grid-template-areas:
+			"main"
+			"pic"
+			"bom"
+			"block";
+			min-height: 100%;
+		}
+
+		.draw
+		{
+			width: 50% !important;
+			height: auto;
+		}
+
+		.hideInPortrait
+		{
+			display: none;
+		}
+	}
+
+
+	#bom, #block
+	{
+		margin: 1em;
+		border: solid var(--border) 0.3em;
+		align-self: end;
+		box-shadow: 0px 0px 20px 5px var(--boxblur);
+	}
+
+	#block
+	{
+		grid-area: block;
+	}
+
+	#block h1, #block h2
+	{
+		display:inline-block;
+	}
+
+	#block *
+	{
+		vertical-align: middle;
+	}
+
+	#bom
+	{
+		grid-area: bom;
+	}
+
+	h1
+	{
+		margin: 0.5em;
+		font-stretch: ultra-expanded;
+	}
+
+	li
+	{
+		font-size:	1.5em;
+		text-indent: -1.4em;
+		margin-left: 1.4em;
+	}
+
+	#bom h2
+	{
+		margin: 0.2em;
+	}
+
+	#bom  h3
+	{
+		margin:0.5em;
+	}
+
+	.overrule
+	{
+		border-top: solid var(--border) 0.2em;
+	}
+
+	.riterule
+	{
+		border-right: solid var(--border) 0.2em;
+	}
+
+
+
+	h5
+	{
+		margin:0.5em;
+		font-size:3em;
+		letter-spacing: 0.3em;
+		-webkit-text-stroke-width: 0.03em;
+		-webkit-text-stroke-color: var(--main);
+		-webkit-text-fill-color: #0000;
+	}
+	h5 > span
+	{
+		-webkit-text-stroke-width: 0.08em;
+	}
+
+	.page
+	{
+		padding: 1em;
+	}
+
+	.page h1
+	{
+		-webkit-text-stroke-width: 0.05em;
+		-webkit-text-stroke-color: var(--main);
+		-webkit-text-fill-color: #0000;
+	}
+
+	@media (orientation: portrait)
+	{
+		h1
+		{
+			font-size: 2.5em;
+			-webkit-text-stroke-width: 0.01em;
+		}
+
+		h5 > span
+		{
+			-webkit-text-stroke-width: 0.02em;
+		}
+
+		h5
+		{
+			-webkit-text-stroke-width: 0.01em;
+		}
+
+		.page h1
+		{
+			-webkit-text-stroke-width: 0.01em;
+		}
+	}
+
+	h3
+	{
+		margin: 0.5em;
+	}
+
+
+	object
+	{
+		visibility: hidden !important;
+	}
+	object, svg, img
+	{
+		filter: drop-shadow(0px 0px 1em var(--border)) drop-shadow(0px 0px 3em var(--blur));
+	}
+
+	.services
+	{
+		padding:1em;
+	}
+
+	.services,
+	.gnss,
+	.software,
+	.protos,
+	.reverse,
+	.optimisation,
+	.engineer
+	{
+		grid-area: main;
+		display: none;
+	}
+
+	.draw
+	{
+		grid-area: pic;
+		width: 80%;
+		max-height:90%;
+		margin: auto;
+	}
+
+
+
+	input[value="services"		]:checked ~ .services		{  visibility: visible; display: block;}
+	input[value="gnss"			]:checked ~ .gnss			{  visibility: visible; display: block;}
+	input[value="software"		]:checked ~ .software		{  visibility: visible; display: block;}
+	input[value="protos"		]:checked ~ .protos			{  visibility: visible; display: block;}
+	input[value="reverse"		]:checked ~ .reverse		{  visibility: visible; display: block;}
+	input[value="optimisation"	]:checked ~ .optimisation	{  visibility: visible; display: block;}
+	input[value="engineer"		]:checked ~ .engineer		{  visibility: visible; display: block;}
+
+	input[type="radio"]
+	{
+		display: none;
+	}
+
+	label
+	{
+		cursor: pointer;
+	}
+
+	input[type="radio"]:checked ~ label
+	{
+		background-color: #58baa344;
+	}
+
+	@keyframes draw
+	{
+		to
+		{
+			stroke-dashoffset: 0;
+		}
+	}
+
+	.logo
+	{
+		display:inline-block;
+		width: 6em;
+		height: auto;
+	}
+
+</style>
+</head>
+<body class="bg">
+<div id="page" class="stripes">
+
+
+<input type="radio" name="pages" onchange=animateSVGPaths() id="services"		value="services" checked/>
+<input type="radio" name="pages" onchange=animateSVGPaths() id="gnss"			value="gnss"/>
+<input type="radio" name="pages" onchange=animateSVGPaths() id="software"		value="software"/>
+<input type="radio" name="pages" onchange=animateSVGPaths() id="protos"			value="protos"/>
+<input type="radio" name="pages" onchange=animateSVGPaths() id="reverse"		value="reverse"/>
+<input type="radio" name="pages" onchange=animateSVGPaths() id="optimisation"	value="optimisation"/>
+<input type="radio" name="pages" onchange=animateSVGPaths() id="engineer"		value="engineer"/>
+
+<object type="image/svg+xml" data="AHEAD.svg" class="services svg draw"></object>
+<div class="services">
+	<h5>
+	<span>A</span>aron<br>
+	<span>H</span>ammond<br>
+	<span>E</span>ngineering<br>
+	<span>A</span>nd<br>
+	<span>D</span>esign
+	</h5>
+
+	<h1>First-principles engineering services</h1>
+</div>
+
+
+<object type="image/svg+xml" data="mill2.svg" class="protos svg draw"></object>
+<div class="protos page">
+
+	<h1>Prototype Design + CNC manufacturing</h1>
+
+	<li>Capturing design intent
+	<li>Design for manufacture
+	<li>4 Axis CNC machining
+	<li>Manual Lathe Turning
+	<li>TIG Welding
+	<li>Sheet metal bending
+	<li>3D Printing
+</div>
+
+<object type="image/svg+xml" data="repairs.svg" class="reverse svg draw"></object>
+<div class="reverse page">
+
+	<h1>REVERSE ENGINEERING, Repairs&nbsp;+&nbsp;Spares</h1>
+
+	<li>Custom machined bolts, pins&nbsp;+&nbsp;shafts
+	<li>Adaptor plates
+	<li>3D printed fixtures and housings
+
+</div>
+
+<object type="image/svg+xml" data="gnss.svg" class="gnss svg draw"></object>
+
+
+<div class="gnss page">
+	<h1>GNSS + INERTIAL NAVIGATION CONSULTING</h1>
+
+	<li>10Y experience with GNSS and inertial navigation systems
+	<li>kalman filtering + state estimation
+	<li>kinematic modelling
+	<li>attitude, biases, and motion estimation
+	<li>robust, real-time observation corrections
+	<li>RTK, PPP, DGNSS, atmospheric modelling
+	<li>optimal Smoothing + control
+	<li>Precise orbit determination
+
+
+</div>
+
+
+<object type="image/svg+xml" data="constrained.svg" class="optimisation svg draw"></object>
+<div class="optimisation page">
+
+	<h1>Constrained Optimisation</h1>
+
+	<li>Analysis of critical constraints
+	<li>Outside-the-box solutions developed from first-principles
+	<li>Elimination of superfluous modules, faster path to market
+	<li>Linear programming, Model predictive control
+	<li>Regression and optimal estimation
+
+
+</div>
+
+<object type="image/svg+xml" data="electronics.svg" class="software svg draw"></object>
+<div class="software page">
+	<h1>Programming, Electronics + Algorithms</h1>
+
+	<li>C/C++ software developement
+	<li>Numerical computing and analysis
+	<li>Embedded firmware
+	<li>ESP32, ARM Microcontrollers
+	<li>CAN/I2C/SPI/Bluetooth
+	<li>Motor control + Kinematics
+	<li>Code review + debugging
+
+</div>
+
+
+<div class="engineer page">
+
+	<h1>Aaron Hammond</h1>
+
+	<li>First-Principles Engineer
+	<li>IP Generator
+	<li>Kalman Filterer
+	<li>Machinist
+	<li>Diagnostician
+	<li>Aerobatic Pilot
+	<li>Cassandra
+	<li>Not a doctor
+
+</div>
+
+<div id="bom" class="bg">
+	<div style="">        <H2><label for="services"		>Engineering Services								</H2></label></div>
+	<div class="overrule"><h3><label for="protos"		>&bull; Prototype Design + CNC manufacturing 		</H3></label></div>
+	<div class="overrule"><h3><label for="reverse"		>&bull; Reverse engineering, Repairs + Spares		</H3></label></div>
+	<div class="overrule"><h3><label for="gnss"			>&bull; GNSS + Inertial NAVIGATION CONSULTING		</H3></label></div>
+	<div class="overrule"><h3><label for="optimisation"	>&bull; Constrained Optimisation					</H3></label></div>
+	<div class="overrule"><h3><label for="software"		>&bull; Programming, Electronics + Algorithms		</H3></label></div>
+
+</div>
+
+<div id="block" class="bg" style="vertical-align:middle">
+	<div style="display:inline-block"  class="riterule">
+
+		<div>					<H3><a href="tel:0434411224">												+(61) 43 4411 224			</a></h3></div>
+		<div class="overrule">	<H3><a href="http://ahead.engineer">										http://ahead.engineer		</a></h3></div>
+		<div class="overrule">	<H3><a href="mailto:engineer@ahead.engineer">								engineer@ahead.engineer		</a></h3></div>
+		<div class="overrule">	<H3><a href="https://maps.app.goo.gl/cf44PnR3mSg5mW7Y8"		target=none>	Taree,NSW,2430				</a></h3></div>
+		<div class="overrule">	<H3><a href="https://www.linkedin.com/in/aaronchammond/"	target=none>	LINKEDIN					</a></h3></div>
+	</div>
+	<div style="display:inline-block">
+		<H1><label for="rad7">Aaron<br>Hammond</label></h1><br>
+		<h2>Engineering<br>And<br>Design</H2>
+	</div>
+	<a href="http://ahead.industries" class="hideInPortrait"><object type="image/svg+xml" data="AHEAD.svg" class="svg logo"></object></a>
+</div>
+
+
+</div>
+
+</body>
+
+<script type="text/javascript">
+
+function checkhash()
+{
+	let hash = new URL(document.URL).hash;
+
+	if (hash)
+	{
+		document.getElementById(hash.substr(1)).checked = true;
+		animateSVGPaths();
+	}
+}
+
+function animateSVGPaths()
+{
+	for (let object of document.querySelectorAll(".svg"))
+	{
+		if (object.contentDocument)
+		{
+			if (object.contentDocument.documentElement.tagName != "svg")
+			{
+				setTimeout(animateSVGPaths, 10);
+				return;
+			}
+
+			object.contentDocument.documentElement.classList	= object.classList;
+
+			object.replaceWith(object.contentDocument.documentElement);
+		}
+	}
+
+	for (let svg of document.querySelectorAll("svg.draw"))
+	{
+		let time = 0;
+		const paths = svg.querySelectorAll("path");
+
+		if (window.getComputedStyle(svg, null).display == "none")
+			continue;
+
+		for (let path of paths)
+		{
+			const pathLength = path.getTotalLength();
+
+			path.style.strokeDasharray	= pathLength;
+			path.style.strokeDashoffset	= pathLength;
+			path.style.fill				= "none";
+			path.style.animation		= "none";
+
+			const drawingTime = 0.003 * pathLength;
+
+			// Start the animation after a brief delay
+			setTimeout(() =>
+			{
+				path.style.animation	= `draw ${drawingTime}s normal forwards`;
+			}, time * 1000);
+
+			time += drawingTime;
+		}
+	}
+
+	for (let svg of document.querySelectorAll("svg"))
+	{
+		const paths = svg.querySelectorAll("path");
+		for (let path of paths)
+		{
+			path.style.stroke = "var(--main)";
+		}
+	}
+}
+
+window.addEventListener("load", animateSVGPaths);
+window.addEventListener("load", checkhash);
+</script>
+</html>
