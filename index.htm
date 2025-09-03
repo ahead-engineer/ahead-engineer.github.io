@@ -127,7 +127,8 @@
 	}
 
 
-	@media (orientation: landscape)
+
+	@media (min-aspect-ratio: 1)
 	{
 		#page
 		{
@@ -138,6 +139,35 @@
 			"bom gap block";
 			overflow: hidden;
 			height: 100%;
+		}
+
+		body
+		{
+			height:100vh;
+		}
+	}
+
+	@media (min-aspect-ratio: 9/5)
+	{
+		#page
+		{
+			grid-template-columns: 34em 1fr 38em;
+			grid-template-rows: 50% 1fr;
+			grid-template-areas:
+			"main pic bom"
+			"main pic block";
+			overflow: hidden;
+			height: 100%;
+		}
+
+		#bom
+		{
+			align-self: start !important;
+		}
+
+		.page
+		{
+			align-self: center !important;
 		}
 
 		body
