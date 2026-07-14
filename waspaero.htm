@@ -391,6 +391,7 @@
 		to
 		{
 			stroke-dashoffset: 0;
+			fill-opacity: 1;
 		}
 	}
 
@@ -412,7 +413,7 @@
 		text-align: center;
 		height: 60vh;
 		background-position: center;
-		background-image: url("fire2.jpg");
+		background-image: url("fire.jpg");
 		background-size: cover;
 	}
 	.bottom
@@ -434,9 +435,11 @@
 
 	<div class="top"></div>
 	<div class="thingy">
-		<img src="waspaero.svg" style="height:80%; margin: auto;">
+
+<object type="image/svg+xml" data="waspaero.svg" class="services svg draw"></object>
+<!-- 		<img src="waspaero.svg" style="height:80%; margin: auto;"> -->
 	</div>
-	<div class="bottom"></div>
+	<div class="bottom">some</div>
 	<div class="next"><marquee>some</marquee><br>some<br>some<br>some<br>some<br>some<br></div>
 
 <div id="page" class="stripes">
@@ -452,7 +455,8 @@
 
 
 
-<object type="image/svg+xml" data="AHEAD.svg" class="services svg draw"></object>
+
+<object type="image/svg+xml" data="waspaero.svg" class="services svg draw"></object>
 <div class="services">
 	<h5>
 	<span>A</span>aron<br>
@@ -628,12 +632,15 @@ function animateSVGPaths()
 		{
 			const pathLength = path.getTotalLength();
 
+			let fill = path.style.fill;
+
 			path.style.strokeDasharray	= pathLength;
 			path.style.strokeDashoffset	= pathLength;
-			path.style.fill				= "none";
+			// path.style.fill				= "none";
 			path.style.animation		= "none";
+			path.style.fillOpacity = 0;
 
-			const drawingTime = 0.003 * pathLength;
+			const drawingTime = Math.sqrt(0.001 * pathLength);
 
 			// Start the animation after a brief delay
 			setTimeout(() =>
@@ -642,6 +649,16 @@ function animateSVGPaths()
 			}, time * 1000);
 
 			time += drawingTime;
+
+			const shadeTime = 0.3;
+
+			setTimeout(() =>
+			{
+				// path.style.animation	= `shade ${shadeTime}s normal forwards`;
+			}, time * 1000);
+
+			time += shadeTime;
+			// return;
 		}
 	}
 
@@ -650,7 +667,7 @@ function animateSVGPaths()
 		const paths = svg.querySelectorAll("path");
 		for (let path of paths)
 		{
-			path.style.stroke		= "var(--main)";
+			// path.style.stroke		= "var(--main)";
 			// path.style.strokeWidth	= "2";
 		}
 	}
