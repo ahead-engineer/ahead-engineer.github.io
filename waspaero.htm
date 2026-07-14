@@ -270,6 +270,10 @@
 	}
 
 
+	#path1
+	{
+		fill-opacity: 0.3 !important;
+	}
 
 	h5
 	{
@@ -357,7 +361,7 @@
 	{
 		grid-area: pic;
 		width: 80%;
-		max-height:90%;
+		max-height:50%;
 		margin: auto;
 	}
 
@@ -391,7 +395,7 @@
 		to
 		{
 			stroke-dashoffset: 0;
-			fill-opacity: 1;
+			fill-opacity: unset;
 		}
 	}
 
@@ -405,7 +409,7 @@
 	.top
 	{
 		height: 20vh;
-		background: 		linear-gradient(180deg, #100 10%, #9f292bff 70%);
+		background: 		linear-gradient(180deg, #100 10%, #cf3538 70%);
 		margin: 0
 	}
 	.thingy
@@ -413,19 +417,25 @@
 		text-align: center;
 		height: 60vh;
 		background-position: center;
-		background-image: url("fire.jpg");
+		background-image: url("fire2.jpg");
 		background-size: cover;
 	}
 	.bottom
 	{
 		height: 20vh;
-		background: 		linear-gradient(0deg, #100 10%, #9f292bff 70%);
+		background: 		linear-gradient(0deg, #100 10%, #cf3538	 70%);
 		margin: 0
 	}
 	.next
 	{
 
 		background-color: #100;
+	}
+
+	.thingy
+	{
+  display: flex;
+  align-items: center;
 	}
 
 </style>
@@ -436,8 +446,7 @@
 	<div class="top"></div>
 	<div class="thingy">
 
-<object type="image/svg+xml" data="waspaero.svg" class="services svg draw"></object>
-<!-- 		<img src="waspaero.svg" style="height:80%; margin: auto;"> -->
+<object type="image/svg+xml" data="waspaero.svg" class="svg draw"></object>
 	</div>
 	<div class="bottom">some</div>
 	<div class="next"><marquee>some</marquee><br>some<br>some<br>some<br>some<br>some<br></div>
@@ -456,7 +465,7 @@
 
 
 
-<object type="image/svg+xml" data="waspaero.svg" class="services svg draw"></object>
+<!-- <object type="image/svg+xml" data="waspaero.svg" class="services svg draw"></object> -->
 <div class="services">
 	<h5>
 	<span>A</span>aron<br>
@@ -640,7 +649,7 @@ function animateSVGPaths()
 			path.style.animation		= "none";
 			path.style.fillOpacity = 0;
 
-			const drawingTime = Math.sqrt(0.001 * pathLength);
+			const drawingTime = Math.sqrt(0.0005 * pathLength);
 
 			// Start the animation after a brief delay
 			setTimeout(() =>
@@ -649,16 +658,6 @@ function animateSVGPaths()
 			}, time * 1000);
 
 			time += drawingTime;
-
-			const shadeTime = 0.3;
-
-			setTimeout(() =>
-			{
-				// path.style.animation	= `shade ${shadeTime}s normal forwards`;
-			}, time * 1000);
-
-			time += shadeTime;
-			// return;
 		}
 	}
 
