@@ -425,10 +425,16 @@
 		background: 		linear-gradient(0deg, #100 10%, #cf3538	 70%);
 		margin: 0
 	}
+	.spacer
+	{
+		height: 0;
+		height: calc(100lvh - 100svh);
+		background-color: #cf3538;
+	}
 	.next
 	{
 
-		background-color: #100;
+		background-color: #cf3538;
 	}
 
 	.thingy
@@ -448,7 +454,7 @@
 <object type="image/svg+xml" data="waspaero.svg" class="svg draw"></object>
 	</div>
 	<div class="bottom"></div>
-	<div class="next">
+	<div class="spacer">
 	</div>
 
 <div id="page" class="stripes">
